@@ -4,9 +4,6 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.webkit.WebView;
 
-/**
- * Created by yany on 2017/3/7.
- */
 
 public class MyWebView extends WebView {
     public MyWebView(Context context) {
