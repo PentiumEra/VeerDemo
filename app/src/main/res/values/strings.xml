@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">VeerDemo</string>
+    <string name="label_permission_submit">授权</string>
+    <string name="title_assist_permissions">权限授予</string>
+    <string name="label_permission_network">网络访问</string>
+    <string name="label_permission_network_desc">用于浏览</string>
 </resources>

@@ -3,23 +3,18 @@ package com.haodong.veerdemo.activities;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
-import android.widget.FrameLayout;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
-import com.alibaba.fastjson.JSONObject;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.haodong.veerdemo.R;
 import com.haodong.veerdemo.recycler.IndexAdapter;
 import com.haodong.veerdemo.recycler.IndexDataConverter;
 import com.haodong.veerdemo.recycler.ItemEntity;
-import com.haodong.veerdemo.recycler.PagingBean;
 import com.haodong.veerdemo.utils.CallBackUtil;
 import com.haodong.veerdemo.utils.OkhttpUtil;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
@@ -39,14 +34,13 @@ public class MainActivity extends BaseActivity {
     private static final String TAG = "MainAvtivity";
     final String LOCATION_URL = "http://mingke.veervr.tv:1920/test";
     private IndexDataConverter converter;
-    private PagingBean bean;
     private ArrayList<ItemEntity> datas = new ArrayList<>();
-    
+    // 当前页码
     private int currentPage = 0;
     private int mPageIndex = 0;
-    //当前已经显示了几条数据
+    // 当前已经显示了几条数据
     private int mCurrentCount = 0;
-    //总数据条数
+    // 总数据条数
     private int mTotal = 0;
     private final int PAGE_SIZE = 6;
 
@@ -70,7 +64,6 @@ public class MainActivity extends BaseActivity {
         intent = new Intent(MainActivity.this, PageActivity.class);
         bundle = new Bundle();
         converter = new IndexDataConverter();
-        bean = new PagingBean();
         mRefreshLayout = findViewById(R.id.refreshLayout);
         mRecyclerView = findViewById(R.id.recyclerView);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
@@ -119,7 +112,6 @@ public class MainActivity extends BaseActivity {
                 mRecyclerView.setAdapter(mAdapter);
                 currentPage++;
                 mCurrentCount = mCurrentCount + 6;
-                bean.addIndex();
                 mAdapter.setOnItemClickListener(new IndexAdapter.OnItemClickListener() {
                     @Override
                     public void onItemClick(BaseQuickAdapter adapter, View view, int position) {

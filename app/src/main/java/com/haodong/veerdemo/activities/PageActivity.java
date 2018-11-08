@@ -57,7 +57,7 @@ public class PageActivity extends BaseActivity {
             }
         });
 
-        //设置WebChromeClient类
+        // 设置WebChromeClient类
         mWebview.setWebChromeClient(new WebChromeClient() {
             //获取网站标题
             @Override
